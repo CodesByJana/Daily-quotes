@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Inspirational Quote</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  .widget {
+    font-family: 'Avenir', sans-serif;
+    text-align: center;
+    width: 350px;
+    height: 200px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    background: linear-gradient(to right, #ffe5d9, #FFAFBD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .quote {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .author {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="quote" id="quote"></div>
+  <div class="author" id="author"></div>
+</div>
+
+<script>
+// Array of quotes
+const quotes = [
+  { quote: "The best way to predict the future is to create it.", author: "Abraham Lincoln" },
+  { quote: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+  { quote: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", author: "Albert Einstein" },
+  // ...add as many quotes as you like
+];
+
+// Get the day of the year
+const now = new Date();
+const start = new Date(now.getFullYear(), 0, 0);
+const diff = now - start;
+const oneDay = 1000 * 60 * 60 * 24;
+const day = Math.floor(diff / oneDay);
+
+// Get today's quote
+const todayQuote = quotes[day % quotes.length];
+
+// Set the quote in the widget
+document.getElementById('quote').textContent = `"${todayQuote.quote}"`;
+document.getElementById('author').textContent = `- ${todayQuote.author}`;
+</script>
+</body>
+</html>
